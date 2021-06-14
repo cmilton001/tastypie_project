@@ -7,5 +7,5 @@ from talk.models import Talk
 class TalkResource(ModelResource):
     class Meta:
         queryset = Talk.objects.all()
-        resource_name = 'talk'
+        resource_name = 'get_talks'
         filtering = {'id': ALL}

@@ -9,14 +9,20 @@
 <li>Hello There</li>
 <br/>
 <br/>
-<li>{{talk.Talk}}</li>
+<li>{{get_talks.Talk}}</li>
 <br/>
 <li> Here is the list!</li>
 
 <li>
-    {% for Talk in talk %}
+    {% for talk in get_talks %}
     <ul>
-        {{talk.id}} {{talk.first_name}} {{talk.last_name}} {{talk.speaker}} {{talk.venue}}
+        ID: {{talk.id}}<br/>
+        First Name: {{talk.first_name}} <br/>
+        Last Name: {{talk.last_name}} <br/>
+        Speaker: {{talk.speaker}} <br/>
+        Venue: {{talk.venue}} <br/>
+        Duration: {{talk.duration}}<br/><br/>
+
     </ul>
     {% endfor %}
 </li>

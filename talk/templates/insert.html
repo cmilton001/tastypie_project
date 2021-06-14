@@ -5,7 +5,9 @@
 
 <body>
 <h1>Insert Talk </h1>
-<form action="" method="POST">
+
+    <form method="post" action="{% url 'insert' %}" >
+        {% csrf_token %}
     ID: <input type="text" id="id" name="id"/><br/>
     First Name: <input type="text" id="first_name" name="first_name"/><br/>
     Last Name: <input type="text" id="last_name" name="last_name"/><br/>
