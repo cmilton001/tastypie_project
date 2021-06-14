@@ -16,6 +16,8 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from django.urls import path, include
+
+from talk import views
 from talk.api import TalkResource
 
 talk_resource = TalkResource()
@@ -24,5 +26,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls')),
     url(r'^api/', include(talk_resource.urls)),
+    path('crud/', include('talk.urls')),
 
 ]
