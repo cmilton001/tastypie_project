@@ -2,9 +2,23 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Update Talk</title>
 </head>
 <body>
+{% block title %}Update Talk{% endblock title %}
 
+{% block content %}
+    <form method="post" >{% csrf_token %}
+        {{ get_talks }}
+        ID: <input type="text" id="id" name="id"/><br/>
+        First Name: <input type="text" id="first_name" name="first_name"/><br/>
+        Last Name: <input type="text" id="last_name" name="last_name"/><br/>
+        Speaker: <input type="text" id="speaker" name="speaker"/><br/>
+        Venue: <input type="text" id="venue" name="venue"/><br/>
+        Duration: <input type="number" id="duration" name="duration" min="1" max="4"/><br/>
+        <button type="submit" value="Save">Save</button>
+        <a href="{% url 'get_talks' %}" > Cancel </a>
+    </form>
+{% endblock content %}
 </body>
 </html>

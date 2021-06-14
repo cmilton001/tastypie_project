@@ -3,7 +3,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.template import RequestContext
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, ListView, UpdateView, DeleteView
+from django.views.generic import CreateView, ListView, UpdateView, DeleteView, DetailView
 from tastypie.authentication import BasicAuthentication
 from tastypie.authorization import Authorization, DjangoAuthorization
 from tastypie.resources import ModelResource
@@ -30,7 +30,6 @@ class Insert(CreateView):
     success_url = reverse_lazy('get_talks')
 
 
-
 class Update(UpdateView):
     model = Talk
     fields = ['id', 'first_name', 'last_name', 'speaker', 'venue', 'duration']
@@ -39,7 +38,16 @@ class Update(UpdateView):
 
 
 class Delete(DeleteView):
-        template_name = 'delete.html'
-        model = Talk
-        context_object_name = 'delete'
-        success_url = reverse_lazy('get_talks')
+    template_name = 'delete.html'
+    model = Talk
+    context_object_name = 'delete'
+    success_url = reverse_lazy('get_talks')
+
+
+
+class GetTalk(DetailView):  # generic view
+    template_name = 'get_talk.html'
+    model = Talk
+    context_object_name = 'get_talk'
+    #if request.HttpRequest == 'GET': # If the form is submitted
+        #search_query = request.GET.get('talk.id', None)
